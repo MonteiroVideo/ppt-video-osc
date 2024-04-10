@@ -1,7 +1,7 @@
 {
 	"id": "PPT-VIDEO",
 	"name": "PPT-VIDEO",
-	"shortname": "",
+	"shortname": "PPT",
 	"description": "CONTROLE O PPT E VIDEO",
 	"version": "0.0.0",
 	"license": "MIT",
@@ -21,6 +21,6 @@
 		"entrypoint": "../osc.js"
 	},
 	"manufacturer": "Monteiro",
-	"products": [ "ppt video osc" ],
+	"products": [ "OSC" ],
 	"keywords": [ "Protocol", "Generic" ]
 }
