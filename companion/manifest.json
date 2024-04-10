@@ -1,6 +1,6 @@
 {
-	"id": "PPT-VIDEO-OSC",
-	"name": "PPT VIDEO - OSC",
+	"id": "PPT-VIDEO",
+	"name": "PPT-VIDEO",
 	"shortname": "",
 	"description": "CONTROLE O PPT E VIDEO",
 	"version": "0.0.0",
@@ -13,14 +13,14 @@
 			"email": "monteiro.audiovisual@gmail.com"
 		}
 	],
+	"legacyIds": ["direct_osc", "osc"],
 	"runtime": {
 		"type": "node18",
 		"api": "nodejs-ipc",
 		"apiVersion": "0.0.0",
 		"entrypoint": "../osc.js"
 	},
-	"legacyIds": [],
 	"manufacturer": "Monteiro",
 	"products": [ "ppt video osc" ],
-	"keywords": [ "" ]
+	"keywords": [ "Protocol", "Generic" ]
 }
