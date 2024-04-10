@@ -1,0 +1,26 @@
+{
+	"id": "PPT-VIDEO-OSC",
+	"name": "PPT VIDEO - OSC",
+	"shortname": "",
+	"description": "CONTROLE O PPT E VIDEO",
+	"version": "0.0.0",
+	"license": "MIT",
+	"repository": "git+https://github.com/MonteiroVideo/ppt-video-osc.git",
+	"bugs": "https://github.com/MonteiroVideo/ppt-video-osc/issues",
+	"maintainers": [
+		{
+			"name": "MONTEIRO",
+			"email": "monteiro.audiovisual@gmail.com"
+		}
+	],
+	"runtime": {
+		"type": "node18",
+		"api": "nodejs-ipc",
+		"apiVersion": "0.0.0",
+		"entrypoint": "../osc.js"
+	},
+	"legacyIds": [],
+	"manufacturer": "Monteiro",
+	"products": [ "ppt video osc" ],
+	"keywords": [ "" ]
+}
