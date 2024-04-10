@@ -9,7 +9,7 @@
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/MonteiroVideo/teste"
+		"url": "git+https://github.com/MonteiroVideo/ppt-video-osc.git"
 	},
 	"dependencies": {
 		"@companion-module/base": "~1.7.0"
