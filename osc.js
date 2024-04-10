@@ -50,14 +50,31 @@ class OSCInstance extends InstanceBase {
 		}
 
 		this.setActionDefinitions({
-			send_int: {
-				name: 'PPT 1',
+			send_blank: {
+				name: 'Send message without arguments',
 				options: [
 					{
 						type: 'textinput',
 						label: 'OSC Path',
 						id: 'path',
-						default: '/abrir1',
+						default: '/osc/path',
+						useVariables: true,
+					},
+				],
+				callback: async (event) => {
+					const path = await this.parseVariablesInString(event.options.path)
+
+					sendOscMessage(path, [])
+				},
+			},
+			send_int: {
+				name: 'Send integer',
+				options: [
+					{
+						type: 'textinput',
+						label: 'OSC Path',
+						id: 'path',
+						default: '/osc/path',
 						useVariables: true,
 					},
 					{
@@ -81,33 +98,166 @@ class OSCInstance extends InstanceBase {
 					])
 				},
 			},
-			send_int: {
-				name: 'PPT 2',
+			send_float: {
+				name: 'Send float',
 				options: [
 					{
 						type: 'textinput',
 						label: 'OSC Path',
 						id: 'path',
-						default: '/abrir2',
+						default: '/osc/path',
 						useVariables: true,
 					},
 					{
 						type: 'textinput',
 						label: 'Value',
-						id: 'int',
+						id: 'float',
 						default: 1,
-						regex: Regex.SIGNED_NUMBER,
+						regex: Regex.SIGNED_FLOAT,
 						useVariables: true,
 					},
 				],
 				callback: async (event) => {
 					const path = await this.parseVariablesInString(event.options.path)
-					const int = await this.parseVariablesInString(event.options.int)
+					const float = await this.parseVariablesInString(event.options.float)
 
 					sendOscMessage(path, [
 						{
-							type: 'i',
-							value: parseInt(int),
+							type: 'f',
+							value: parseFloat(float),
+						},
+					])
+				},
+			},
+			send_string: {
+				name: 'Send string',
+				options: [
+					{
+						type: 'textinput',
+						label: 'OSC Path',
+						id: 'path',
+						default: '/osc/path',
+						useVariables: true,
+					},
+					{
+						type: 'textinput',
+						label: 'Value',
+						id: 'string',
+						default: 'text',
+						useVariables: true,
+					},
+				],
+				callback: async (event) => {
+					const path = await this.parseVariablesInString(event.options.path)
+					const string = await this.parseVariablesInString(event.options.string)
+
+					sendOscMessage(path, [
+						{
+							type: 's',
+							value: '' + string,
+						},
+					])
+				},
+			},
+			send_multiple: {
+				name: 'Send message with multiple arguments',
+				options: [
+					{
+						type: 'textinput',
+						label: 'OSC Path',
+						id: 'path',
+						default: '/osc/path',
+						useVariables: true,
+					},
+					{
+						type: 'textinput',
+						label: 'Arguments',
+						id: 'arguments',
+						default: '1 "test" 2.5',
+						useVariables: true,
+					},
+				],
+				callback: async (event) => {
+					const path = await this.parseVariablesInString(event.options.path)
+					const argsStr = await this.parseVariablesInString(event.options.arguments)
+
+					const rawArgs = (argsStr + '').replace(/“/g, '"').replace(/”/g, '"').split(' ')
+
+					if (rawArgs.length) {
+						const args = []
+						for (let i = 0; i < rawArgs.length; i++) {
+							if (rawArgs[i].length == 0) continue
+							if (isNaN(rawArgs[i])) {
+								let str = rawArgs[i]
+								if (str.startsWith('"')) {
+									//a quoted string..
+									while (!rawArgs[i].endsWith('"')) {
+										i++
+										str += ' ' + rawArgs[i]
+									}
+								} else if (str.startsWith('{')) {
+									//Probably a JSON object
+									try {
+										args.push((JSON.parse(rawArgs[i])))
+									} catch (error) {
+										this.log('error', `not a JSON object ${rawArgs[i]}`)
+									}
+								}
+
+								args.push({
+									type: 's',
+									value: str.replace(/"/g, '').replace(/'/g, ''),
+								})
+							} else if (rawArgs[i].indexOf('.') > -1) {
+								args.push({
+									type: 'f',
+									value: parseFloat(rawArgs[i]),
+								})
+							} else {
+								args.push({
+									type: 'i',
+									value: parseInt(rawArgs[i]),
+								})
+							}
+						}
+
+						sendOscMessage(path, args)
+					}
+				},
+			},
+			send_boolean: {
+				name: 'Send boolean',
+				options: [
+					{
+						type: 'static-text',
+						label: 'Attention',
+						value: 'The boolean type is non-standard and may only work with some receivers.',
+						id: 'warning'
+					},
+					{
+						type: 'textinput',
+						label: 'OSC Path',
+						id: 'path',
+						default: '/osc/path',
+						useVariables: true,
+					},
+					{
+						type: 'checkbox',
+						label: 'Value',
+						id: 'value',
+						default: false,
+					},
+				],
+				callback: async (event) => {
+					const path = await this.parseVariablesInString(event.options.path)
+					let type = 'F'
+					if (event.options.value === true) {
+						type = 'T'
+					}
+
+					sendOscMessage(path, [
+						{
+							type,
 						},
 					])
 				},
