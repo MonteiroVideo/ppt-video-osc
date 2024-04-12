@@ -1,10 +1,7 @@
-const { InstanceBase, Regex, runEntrypoint, InstanceStatus } = require('@companion-module/base')
+const { InstanceBase, Regex, runEntrypoint } = require('@companion-module/base')
 const UpgradeScripts = require('./upgrades')
-const UpdateActions = require('./actions')
-const UpdateFeedbacks = require('./feedbacks')
-const UpdateVariableDefinitions = require('./variables')
 
-class ModuleInstance extends InstanceBase {
+class OSCInstance extends InstanceBase {
 	constructor(internal) {
 		super(internal)
 	}
@@ -12,11 +9,9 @@ class ModuleInstance extends InstanceBase {
 	async init(config) {
 		this.config = config
 
-		this.updateStatus(InstanceStatus.Ok)
+		this.updateStatus('ok')
 
 		this.updateActions() // export actions
-		this.updateFeedbacks() // export feedbacks
-		this.updateVariableDefinitions() // export variable definitions
 	}
 	// When module gets deleted
 	async destroy() {
@@ -53,6 +48,7 @@ class ModuleInstance extends InstanceBase {
 			this.log('debug', `Sending Args ${JSON.stringify(args)}`)
 			this.oscSend(this.config.host, this.config.port, path, args)
 		}
+
 		this.setActionDefinitions({
 			send_blank: {
 				name: 'Send message without arguments',
@@ -185,7 +181,7 @@ class ModuleInstance extends InstanceBase {
 					const path = await this.parseVariablesInString(event.options.path)
 					const argsStr = await this.parseVariablesInString(event.options.arguments)
 
-					const rawArgs = (argsStr + '').replace(/ì/g, '"').replace(/î/g, '"').split(' ')
+					const rawArgs = (argsStr + '').replace(/‚Äú/g, '"').replace(/‚Äù/g, '"').split(' ')
 
 					if (rawArgs.length) {
 						const args = []
@@ -199,7 +195,7 @@ class ModuleInstance extends InstanceBase {
 										i++
 										str += ' ' + rawArgs[i]
 									}
-								} else if (str.startsWith('{')) {
+								} else if(str.startsWith('{')) {
 									//Probably a JSON object
 									try {
 										args.push((JSON.parse(rawArgs[i])))
@@ -229,7 +225,6 @@ class ModuleInstance extends InstanceBase {
 					}
 				},
 			},
-
 			send_boolean: {
 				name: 'Send boolean',
 				options: [
@@ -268,17 +263,7 @@ class ModuleInstance extends InstanceBase {
 				},
 			},
 		})
-
-		
-	}
-
-	updateFeedbacks() {
-		UpdateFeedbacks(this)
-	}
-
-	updateVariableDefinitions() {
-		UpdateVariableDefinitions(this)
 	}
 }
 
-runEntrypoint(ModuleInstance, UpgradeScripts)
+runEntrypoint(OSCInstance, UpgradeScripts)
