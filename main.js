@@ -1,5 +1,6 @@
 const { InstanceBase, Regex, runEntrypoint } = require('@companion-module/base')
 const UpgradeScripts = require('./upgrades')
+const getPresetDefinitions = require('./presets')
 
 class OSCInstance extends InstanceBase {
 	constructor(internal) {
@@ -12,7 +13,9 @@ class OSCInstance extends InstanceBase {
 		this.updateStatus('ok')
 
 		this.updateActions() // export actions
+                this.setPresetDefinitions(getPresetDefinitions(this))
 	}
+
 	// When module gets deleted
 	async destroy() {
 		this.log('debug', 'destroy')
