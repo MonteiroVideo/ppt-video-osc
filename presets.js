@@ -637,7 +637,7 @@ module.exports= function (self) {
             text: 'VIDEO\n01',
             size: 'auto',
             color: combineRgb(255, 255, 255),
-            bgcolor: combineRgb(128, 128, 0),
+            bgcolor: combineRgb(25, 25, 200),
         },
         steps: [
             {
@@ -646,6 +646,267 @@ module.exports= function (self) {
                         actionId: 'send_int',  // References the name of the action
                         options: {
                             path: '/video1',
+                            value: 1,
+                        },
+                    },
+                ],
+                up: [],
+            },
+        ],
+        feedbacks: [],
+    }
+    presets['VIDEO02'] = {
+        type: 'button',
+        category: 'VIDEO',
+        name: 'pr_init',
+        style: {
+            text: 'VIDEO\n02',
+            size: 'auto',
+            color: combineRgb(255, 255, 255),
+            bgcolor: combineRgb(25, 25, 200),
+        },
+        steps: [
+            {
+                down: [
+                    {
+                        actionId: 'send_int',  // References the name of the action
+                        options: {
+                            path: '/video2',
+                            value: 1,
+                        },
+                    },
+                ],
+                up: [],
+            },
+        ],
+        feedbacks: [],
+    }
+    presets['VIDEO03'] = {
+        type: 'button',
+        category: 'VIDEO',
+        name: 'pr_init',
+        style: {
+            text: 'VIDEO\n03',
+            size: 'auto',
+            color: combineRgb(255, 255, 255),
+            bgcolor: combineRgb(25, 25, 200),
+        },
+        steps: [
+            {
+                down: [
+                    {
+                        actionId: 'send_int',  // References the name of the action
+                        options: {
+                            path: '/video3',
+                            value: 1,
+                        },
+                    },
+                ],
+                up: [],
+            },
+        ],
+        feedbacks: [],
+    }
+    presets['VIDEO04'] = {
+        type: 'button',
+        category: 'VIDEO',
+        name: 'pr_init',
+        style: {
+            text: 'VIDEO\n04',
+            size: 'auto',
+            color: combineRgb(255, 255, 255),
+            bgcolor: combineRgb(25, 25, 200),
+        },
+        steps: [
+            {
+                down: [
+                    {
+                        actionId: 'send_int',  // References the name of the action
+                        options: {
+                            path: '/video4',
+                            value: 1,
+                        },
+                    },
+                ],
+                up: [],
+            },
+        ],
+        feedbacks: [],
+    }
+    presets['VIDEO05'] = {
+        type: 'button',
+        category: 'VIDEO',
+        name: 'pr_init',
+        style: {
+            text: 'VIDEO\n05',
+            size: 'auto',
+            color: combineRgb(255, 255, 255),
+            bgcolor: combineRgb(25, 25, 200),
+        },
+        steps: [
+            {
+                down: [
+                    {
+                        actionId: 'send_int',  // References the name of the action
+                        options: {
+                            path: '/video5',
+                            value: 1,
+                        },
+                    },
+                ],
+                up: [],
+            },
+        ],
+        feedbacks: [],
+    }
+    presets['VIDEO06'] = {
+        type: 'button',
+        category: 'VIDEO',
+        name: 'pr_init',
+        style: {
+            text: 'VIDEO\n06',
+            size: 'auto',
+            color: combineRgb(255, 255, 255),
+            bgcolor: combineRgb(25, 25, 200),
+        },
+        steps: [
+            {
+                down: [
+                    {
+                        actionId: 'send_int',  // References the name of the action
+                        options: {
+                            path: '/video6',
+                            value: 1,
+                        },
+                    },
+                ],
+                up: [],
+            },
+        ],
+        feedbacks: [],
+    }
+    presets['VIDEO07'] = {
+        type: 'button',
+        category: 'VIDEO',
+        name: 'pr_init',
+        style: {
+            text: 'VIDEO\n07',
+            size: 'auto',
+            color: combineRgb(255, 255, 255),
+            bgcolor: combineRgb(25, 25, 200),
+        },
+        steps: [
+            {
+                down: [
+                    {
+                        actionId: 'send_int',  // References the name of the action
+                        options: {
+                            path: '/video7',
+                            value: 1,
+                        },
+                    },
+                ],
+                up: [],
+            },
+        ],
+        feedbacks: [],
+    }
+    presets['VIDEO08'] = {
+        type: 'button',
+        category: 'VIDEO',
+        name: 'pr_init',
+        style: {
+            text: 'VIDEO\n08',
+            size: 'auto',
+            color: combineRgb(255, 255, 255),
+            bgcolor: combineRgb(25, 25, 200),
+        },
+        steps: [
+            {
+                down: [
+                    {
+                        actionId: 'send_int',  // References the name of the action
+                        options: {
+                            path: '/video8',
+                            value: 1,
+                        },
+                    },
+                ],
+                up: [],
+            },
+        ],
+        feedbacks: [],
+    }
+    presets['VIDEO09'] = {
+        type: 'button',
+        category: 'VIDEO',
+        name: 'pr_init',
+        style: {
+            text: 'VIDEO\n09',
+            size: 'auto',
+            color: combineRgb(255, 255, 255),
+            bgcolor: combineRgb(25, 25, 200),
+        },
+        steps: [
+            {
+                down: [
+                    {
+                        actionId: 'send_int',  // References the name of the action
+                        options: {
+                            path: '/video9',
+                            value: 1,
+                        },
+                    },
+                ],
+                up: [],
+            },
+        ],
+        feedbacks: [],
+    }
+    presets['VIDEO10'] = {
+        type: 'button',
+        category: 'VIDEO',
+        name: 'pr_init',
+        style: {
+            text: 'VIDEO\n10',
+            size: 'auto',
+            color: combineRgb(255, 255, 255),
+            bgcolor: combineRgb(25, 25, 200),
+        },
+        steps: [
+            {
+                down: [
+                    {
+                        actionId: 'send_int',  // References the name of the action
+                        options: {
+                            path: '/video10',
+                            value: 1,
+                        },
+                    },
+                ],
+                up: [],
+            },
+        ],
+        feedbacks: [],
+    }
+
+    presets['FECHARVIDEO'] = {
+        type: 'button',
+        category: 'VIDEO',
+        name: 'pr_init',
+        style: {
+            text: 'Fechar\nVideo',
+            size: 'auto',
+            color: combineRgb(255, 255, 255),
+            bgcolor: combineRgb(255, 25, 25),
+        },
+        steps: [
+            {
+                down: [
+                    {
+                        actionId: 'send_int',  // References the name of the action
+                        options: {
+                            path: '/fecharVideo',
                             value: 1,
                         },
                     },
