@@ -13,7 +13,7 @@ class OSCInstance extends InstanceBase {
 		this.updateStatus('ok')
 
 		this.updateActions() // export actions
-                this.setPresetDefinitions(getPresetDefinitions(this))
+		this.setPresetDefinitions(getPresetDefinitions(this))
 	}
 
 	// When module gets deleted
@@ -1138,8 +1138,8 @@ class OSCInstance extends InstanceBase {
 					])
 				},
 			},
-			
-			
+
+
 		})
 	}
 }

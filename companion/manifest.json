@@ -3,7 +3,7 @@
 	"name": "PPT-VIDEO",
 	"shortname": "PPT-VIDEO",
 	"description": "",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"license": "MIT",
 	"repository": "git+https://github.com/MonteiroVideo/ppt-video-osc.git",
 	"bugs": "https://github.com/MonteiroVideo/ppt-video-osc/issues",
