@@ -1,2 +1,2 @@
 ## PPT VIDEO
-Todos os preset estao feitos, porem se houver duvida, me mande no instagram. Monteiro.audiovisual
+All the presets are done, but if you have any questions, send me a message on Instagram. Monteiro.audiovisual
